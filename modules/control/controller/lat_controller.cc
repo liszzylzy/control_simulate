@@ -211,13 +211,13 @@ Status LatController::Init(std::shared_ptr<DependencyInjector> injector,
    (-1.0 * (l_f^2 * c_f + l_r^2 * c_r) / i_z) / v;]
   */
   matrix_a_(0, 1) = 1;
-  matrix_a_(1, 2) = ((cf_ + cr_) / mass) ;
+  matrix_a_(1, 2) = ((cf_ + cr_) / mass_) ;
   matrix_a_(2, 3) = 1;
   matrix_a_(3, 2) = ((lf_ * cf_ - lr_ * cr_) / iz_);
 
   matrix_a_coeff_ = Matrix::Zero(matrix_size, matrix_size);
-  matrix_a_coeff_(1, 1) = ((-(cf_ + cr_) / mass) );
-  matrix_a_coeff_(1, 3) = ( (lr_ * cr_ - lf_ * cf_) / mass );
+  matrix_a_coeff_(1, 1) = (-(cf_ + cr_) / mass_) ;
+  matrix_a_coeff_(1, 3) = ((lr_ * cr_ - lf_ * cf_) / mass_ );
   matrix_a_coeff_(3, 1) = ((lr_ * cr_ - lf_ * cf_) / iz_);
   matrix_a_coeff_(3, 3) = (-1.0 * (lf_^2 * cf_ + lr_^2 * cr_) / iz_);
 
